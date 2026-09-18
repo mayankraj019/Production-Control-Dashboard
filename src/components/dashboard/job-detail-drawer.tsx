@@ -62,7 +62,6 @@ function DrawerContent({
 
   return (
     <div className="w-full sm:w-[480px] md:w-[520px] max-w-full border-l border-zinc-200 bg-white shadow-xl dark:border-zinc-800 dark:bg-zinc-950 flex flex-col h-full max-h-screen">
-      {/* 1. Drawer Header */}
       <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3 dark:border-zinc-800 shrink-0">
         <div className="flex items-center gap-2 min-w-0">
           <span
@@ -84,7 +83,6 @@ function DrawerContent({
         </Button>
       </div>
 
-      {/* Feedback banner */}
       {feedbackMessage && (
         <div className="flex items-center gap-2 bg-emerald-50 px-4 py-2 text-xs font-medium text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300 border-b border-emerald-200 dark:border-emerald-900/50 shrink-0">
           <Check className="h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
@@ -92,9 +90,7 @@ function DrawerContent({
         </div>
       )}
 
-      {/* Drawer Body - Scrollable */}
       <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5 text-xs">
-        {/* Section 1: Status Update Control */}
         <section className="rounded-sm border border-zinc-200 bg-zinc-50/60 p-3.5 dark:border-zinc-800 dark:bg-zinc-900/40 space-y-3">
           <div className="flex items-center justify-between">
             <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
@@ -130,7 +126,6 @@ function DrawerContent({
           </div>
         </section>
 
-        {/* Section 2: Core Work Order Specifications */}
         <section className="space-y-2.5">
           <h4 className="font-mono text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Order Specifications
@@ -175,10 +170,9 @@ function DrawerContent({
           </div>
         </section>
 
-        {/* Section 3: Machine & Routing Information */}
         <section className="space-y-2.5">
           <h4 className="font-mono text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Machine Floor Allocation
+            Machine Allocation
           </h4>
           <div className="rounded-sm border border-zinc-200 bg-white p-3.5 dark:border-zinc-800 dark:bg-zinc-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
             <div className="flex items-center gap-2">
@@ -191,10 +185,9 @@ function DrawerContent({
           </div>
         </section>
 
-        {/* Section 4: Operational Notes & Issues */}
         <section className="space-y-2.5">
           <h4 className="font-mono text-[11px] font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Notes & Operational Issues
+            Notes & Exceptions
           </h4>
 
           {hasIssues ? (
@@ -228,7 +221,6 @@ function DrawerContent({
         </section>
       </div>
 
-      {/* Drawer Footer */}
       <div className="border-t border-zinc-200 p-3 sm:p-4 dark:border-zinc-800 flex justify-end shrink-0">
         <Button
           variant="outline"
@@ -249,7 +241,6 @@ export const JobDetailDrawer = React.memo(function JobDetailDrawer({
   onClose,
   onUpdateStatus,
 }: JobDetailDrawerProps) {
-  // Handle Escape key to close drawer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -272,7 +263,6 @@ export const JobDetailDrawer = React.memo(function JobDetailDrawer({
       role="dialog"
       aria-modal="true"
     >
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-zinc-950/40 backdrop-blur-[1px] transition-opacity"
         onClick={onClose}

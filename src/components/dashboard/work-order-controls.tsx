@@ -43,9 +43,7 @@ export const WorkOrderControls = React.memo(function WorkOrderControls({
 }: WorkOrderControlsProps) {
   return (
     <div className="flex flex-col gap-2.5 rounded-sm border border-zinc-200 bg-zinc-50/70 p-2.5 dark:border-zinc-800 dark:bg-zinc-900/40 sm:p-3 lg:flex-row lg:items-center lg:justify-between">
-      {/* 1. Search & Status Filter Group */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 flex-1">
-        {/* Search Input - Full width on mobile, constrained on desktop */}
         <div className="relative w-full sm:max-w-xs">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400 sm:h-3.5 sm:w-3.5" />
           <input
@@ -60,14 +58,13 @@ export const WorkOrderControls = React.memo(function WorkOrderControls({
             <button
               onClick={() => onSearchChange("")}
               className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
-              aria-label="Clear search input"
+              aria-label="Clear search"
             >
               <X className="h-3.5 w-3.5" />
             </button>
           )}
         </div>
 
-        {/* Status Filter Dropdown */}
         <div className="flex items-center gap-1.5 w-full sm:w-auto">
           <label
             htmlFor="status-select"
@@ -90,7 +87,6 @@ export const WorkOrderControls = React.memo(function WorkOrderControls({
         </div>
       </div>
 
-      {/* 2. Sorting & Reset Controls Group */}
       <div className="flex flex-wrap items-center justify-between sm:justify-start gap-2 pt-1 sm:pt-0 border-t border-zinc-200/60 sm:border-0 dark:border-zinc-800/60">
         <div className="flex items-center gap-1.5 flex-1 sm:flex-initial">
           <label
@@ -110,20 +106,17 @@ export const WorkOrderControls = React.memo(function WorkOrderControls({
           </select>
         </div>
 
-        {/* Direction Toggle Button */}
         <Button
           variant="outline"
           size="sm"
           onClick={onSortDirectionToggle}
           className="h-9 sm:h-8 px-2.5 font-mono text-xs text-zinc-700 dark:text-zinc-300 gap-1.5"
-          title={`Order: ${sortDirection === "asc" ? "Ascending" : "Descending"}`}
-          aria-label={`Toggle sort direction. Currently ${sortDirection === "asc" ? "Ascending" : "Descending"}`}
+          aria-label={`Toggle sort order (${sortDirection})`}
         >
           <ArrowUpDown className="h-3.5 w-3.5 text-zinc-400" />
           <span className="uppercase">{sortDirection}</span>
         </Button>
 
-        {/* Clear Filters Action */}
         {isFiltered && (
           <Button
             variant="ghost"

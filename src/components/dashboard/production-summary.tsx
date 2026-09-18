@@ -11,7 +11,6 @@ export const ProductionSummary = React.memo(function ProductionSummary({
 }: ProductionSummaryProps) {
   return (
     <section aria-label="Production Summary" className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-      {/* 1. Total Jobs */}
       <Card className="rounded-sm border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/80">
         <CardContent className="p-3 sm:p-4">
           <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400">
@@ -33,7 +32,6 @@ export const ProductionSummary = React.memo(function ProductionSummary({
         </CardContent>
       </Card>
 
-      {/* 2. Delayed Jobs (Operational Exception) */}
       <Card className="rounded-sm border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/80">
         <CardContent className="p-3 sm:p-4">
           <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400">
@@ -60,7 +58,6 @@ export const ProductionSummary = React.memo(function ProductionSummary({
         </CardContent>
       </Card>
 
-      {/* 3. Due Soon */}
       <Card className="rounded-sm border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/80">
         <CardContent className="p-3 sm:p-4">
           <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400">
@@ -85,7 +82,6 @@ export const ProductionSummary = React.memo(function ProductionSummary({
         </CardContent>
       </Card>
 
-      {/* 4. Completed Jobs */}
       <Card className="rounded-sm border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/80">
         <CardContent className="p-3 sm:p-4">
           <div className="flex items-center justify-between text-zinc-500 dark:text-zinc-400">

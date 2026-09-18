@@ -3,7 +3,6 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import { AppHeader } from "@/components/layout/app-header";
 import "./globals.css";
 
-// Google & Apple modern UI font stack
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],

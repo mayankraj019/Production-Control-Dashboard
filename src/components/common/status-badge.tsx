@@ -26,7 +26,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
         return {
           container:
             "border-amber-200 bg-amber-50/70 text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-300",
-          dot: "rounded-xs rotate-45 bg-amber-600 dark:bg-amber-400", // Diamond shape for distinct non-color visual distinction
+          dot: "rounded-xs rotate-45 bg-amber-600 dark:bg-amber-400",
         };
       case "Completed":
         return {

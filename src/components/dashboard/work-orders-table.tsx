@@ -35,7 +35,8 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
   onPageChange,
 }: WorkOrdersTableProps) {
   const [internalSelectedJobId, setInternalSelectedJobId] = useState<string | null>(null);
-  const selectedJobId = externalSelectedJobId !== undefined ? externalSelectedJobId : internalSelectedJobId;
+  const selectedJobId =
+    externalSelectedJobId !== undefined ? externalSelectedJobId : internalSelectedJobId;
 
   const handleRowClick = (job: Job) => {
     setInternalSelectedJobId(job.id);
@@ -51,33 +52,19 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
 
   return (
     <div className="w-full">
-      {/* 1. Desktop & Tablet Semantic Table (>= 768px) with Integrated Pagination Footer */}
+      {/* Desktop & Tablet Table */}
       <div className="hidden md:block w-full overflow-hidden rounded-sm border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-xs">
             <thead>
               <tr className="border-b border-zinc-200 bg-zinc-50/80 text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400">
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Job ID
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Product
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Customer
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium text-right whitespace-nowrap">
-                  Quantity
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Due Date
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Status
-                </th>
-                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">
-                  Assigned Machine
-                </th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Job ID</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Product</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Customer</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium text-right whitespace-nowrap">Quantity</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Due Date</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Status</th>
+                <th scope="col" className="py-2.5 px-3.5 font-medium whitespace-nowrap">Assigned Machine</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800/60">
@@ -93,47 +80,31 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
                     onKeyDown={(e) => handleKeyDown(e, job)}
                     className={cn(
                       "cursor-pointer transition-colors outline-none",
-                      // Neutral hover
                       "hover:bg-zinc-50 dark:hover:bg-zinc-900/50",
-                      // Neutral selected state
                       isSelected
                         ? "bg-zinc-100/90 dark:bg-zinc-800/70 font-normal"
                         : "bg-transparent",
-                      // Accessible focus
                       "focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600"
                     )}
                   >
-                    {/* Job ID */}
                     <td className="py-3 px-3.5 font-mono font-medium text-zinc-900 dark:text-zinc-100 whitespace-nowrap">
                       {job.id}
                     </td>
-
-                    {/* Product */}
                     <td className="py-3 px-3.5 font-medium text-zinc-900 dark:text-zinc-100 whitespace-nowrap">
                       {job.productName}
                     </td>
-
-                    {/* Customer */}
                     <td className="py-3 px-3.5 text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
                       {job.customer}
                     </td>
-
-                    {/* Quantity */}
                     <td className="py-3 px-3.5 font-mono text-right text-zinc-800 dark:text-zinc-200 tabular-nums whitespace-nowrap">
                       {job.quantity.toLocaleString()}
                     </td>
-
-                    {/* Due Date */}
                     <td className="py-3 px-3.5 font-mono text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
                       {job.dueDate}
                     </td>
-
-                    {/* Status */}
                     <td className="py-3 px-3.5 whitespace-nowrap">
                       <StatusBadge status={job.status} />
                     </td>
-
-                    {/* Assigned Machine */}
                     <td className="py-3 px-3.5 font-mono text-[11px] text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
                       {job.assignedMachine}
                     </td>
@@ -144,10 +115,8 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
           </table>
         </div>
 
-        {/* Integrated Pagination Footer on Desktop */}
         {onPageChange && totalItems > 0 && (
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-200 bg-zinc-50/70 px-4 py-2.5 dark:border-zinc-800 dark:bg-zinc-900/50 text-xs">
-            {/* Left: Slice count + Rows selector */}
             <div className="flex items-center gap-3">
               <span className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
                 Showing <strong className="text-zinc-900 dark:text-zinc-100 font-medium">{startIndex + 1}–{Math.min(endIndex, totalItems)}</strong> of <strong className="text-zinc-900 dark:text-zinc-100 font-medium">{totalItems}</strong>
@@ -178,7 +147,6 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
               )}
             </div>
 
-            {/* Right: Direct Page Numbers + Prev / Next */}
             <div className="flex items-center gap-1.5">
               <Button
                 variant="outline"
@@ -192,7 +160,6 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
                 <span>Prev</span>
               </Button>
 
-              {/* Numbered Page Buttons */}
               <div className="flex items-center gap-1">
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <Button
@@ -214,7 +181,6 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
                 ))}
               </div>
 
-              {/* Forward Button to go to the next page */}
               <Button
                 variant="outline"
                 size="sm"
@@ -231,7 +197,7 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
         )}
       </div>
 
-      {/* 2. Mobile Compact Work-Order Cards (< 768px) */}
+      {/* Mobile Card View */}
       <div className="block md:hidden space-y-2">
         {jobs.map((job) => {
           const isSelected = selectedJobId === job.id;
@@ -253,7 +219,6 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
                 "focus-visible:ring-1 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600"
               )}
             >
-              {/* Header: Job ID + Status */}
               <div className="flex items-center justify-between gap-2">
                 <span className="font-mono text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                   {job.id}
@@ -261,17 +226,14 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
                 <StatusBadge status={job.status} />
               </div>
 
-              {/* Product Name */}
               <h4 className="mt-1 text-xs font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
                 {job.productName}
               </h4>
 
-              {/* Customer */}
               <p className="mt-0.5 text-[11px] text-zinc-500 dark:text-zinc-400">
                 {job.customer}
               </p>
 
-              {/* Metrics Strip: Quantity, Due Date, Machine */}
               <div className="mt-2 pt-2 border-t border-zinc-100 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px]">
                 <div className="flex items-center gap-1">
                   <span className="text-zinc-500 dark:text-zinc-400">Qty:</span>
@@ -298,7 +260,6 @@ export const WorkOrdersTable = React.memo(function WorkOrdersTable({
           );
         })}
 
-        {/* Mobile Pagination Bar */}
         {onPageChange && totalItems > 0 && (
           <div className="flex items-center justify-between rounded-sm border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-800 dark:bg-zinc-950 text-xs">
             <span className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
